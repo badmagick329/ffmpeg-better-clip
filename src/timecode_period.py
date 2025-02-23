@@ -22,9 +22,6 @@ class TimecodePeriod(TimePeriod):
     def end_seconds(self) -> float:
         return self._to_seconds(self.end_input)
 
-    def duration(self) -> float:
-        return self.end_seconds() - self.start_seconds()
-
     @staticmethod
     def _to_seconds(time_str: str) -> float:
         hours, minutes, seconds = [float(t) for t in time_str.split(":")]

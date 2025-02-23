@@ -22,9 +22,6 @@ class SecondsPeriod(TimePeriod):
     def end_seconds(self) -> float:
         return float(self.end_input)
 
-    def duration(self) -> float:
-        return self.end_seconds() - self.start_seconds()
-
     @classmethod
     def _validate(cls, start: str, end: str):
         if not isinstance(start, str) or not isinstance(end, str):

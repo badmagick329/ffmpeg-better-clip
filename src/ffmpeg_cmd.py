@@ -44,7 +44,6 @@ class FFmpegCmd:
         match = self.pattern.match(self.cmd)
         if match is None:
             raise ValueError("Invalid FFmpeg command format")
-        print(f"other group `{match.group('other')}`")
         return self.pattern.sub(
             rf"\g<ffmpeg> -ss {ss}\g<start>\g<other>-t {t}\g<rest>", self.cmd
         )

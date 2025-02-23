@@ -15,5 +15,5 @@ class TimePeriod(ABC):
     @abstractmethod
     def end_seconds(self) -> float: ...
 
-    @abstractmethod
-    def duration(self) -> float: ...
+    def duration(self) -> float:
+        return round(self.end_seconds() - self.start_seconds(), 3)

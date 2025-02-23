@@ -3,7 +3,9 @@ name = "ffmpeg-better-clip"
 version = "0.1.0"
 description = "Add your description here"
 requires-python = ">=3.10"
-dependencies = []
+dependencies = [
+    "pyperclip>=1.9.0",
+]
 
 [tool.ruff]
 ignore = ["E402", "F401"]

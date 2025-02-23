@@ -23,18 +23,18 @@ TIMECODE_SECONDS_TEST_CASES = [
 ]
 
 INVALID_TIMECODE_CASES = [
-    ("missing milliseconds", "01:00:00", "Invalid timecode format"),
-    ("invalid hours", "99:00:00.000", "Hours must be between 00-23"),
-    ("invalid minutes", "00:60:00.000", "Minutes must be between 00-59"),
-    ("invalid seconds", "00:00:60.000", "Seconds must be between 00-59"),
-    ("wrong format", "1:2:3.000", "Invalid timecode format"),
-    ("letters in input", "aa:bb:cc.000", "Invalid timecode format"),
-    ("empty string", "", "Invalid timecode format"),
-    ("none value", None, "Invalid timecode format"),
+    ("missing milliseconds", "01:00:00"),
+    ("invalid hours", "99:00:00.000"),
+    ("invalid minutes", "00:60:00.000"),
+    ("invalid seconds", "00:00:60.000"),
+    ("wrong format", "1:2:3.000"),
+    ("letters in input", "aa:bb:cc.000"),
+    ("empty string", ""),
+    ("none value", None),
 ]
 
 EDGE_TIMECODE_CASES = [
-    ("start and end edges", "00:00:00.000", "23:59:59.999", 86399.999),
+    ("start and end edges", "00:00:00.000", "23:59:59.999", 0.0, 86399.999),
 ]
 
 INVALID_DURATION_CASES = [

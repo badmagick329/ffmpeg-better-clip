@@ -1,6 +1,7 @@
 import re
 
-from .time_period import TimePeriod
+from src.exceptions import TimePeriodCreationError
+from src.time_period import TimePeriod
 
 
 class TimecodePeriod(TimePeriod):
@@ -12,7 +13,7 @@ class TimecodePeriod(TimePeriod):
         cls._validate(start, end)
         created = cls(start, end)
         if created.duration() <= 0:
-            raise ValueError("Invalid timecode duration")
+            raise TimePeriodCreationError("Invalid timecode duration")
         return created
 
     def start_seconds(self) -> float:
@@ -32,20 +33,20 @@ class TimecodePeriod(TimePeriod):
     @classmethod
     def _validate(cls, start: str, end: str):
         if not isinstance(start, str) or not isinstance(end, str):
-            raise ValueError("Invalid timecode format")
+            raise TimePeriodCreationError("Invalid timecode format")
 
         time_regex = re.compile(r"^([0-9]{2}):([0-9]{2}):([0-9]{2})\.([0-9]{1,3})$")
 
         for time_str in [start, end]:
             match = time_regex.match(time_str)
             if not match:
-                raise ValueError("Invalid timecode format")
+                raise TimePeriodCreationError("Invalid timecode format")
 
             hours, minutes, seconds, _ = map(int, match.groups())
 
             if hours > 23:
-                raise ValueError("Hours must be between 00-23")
+                raise TimePeriodCreationError("Hours must be between 00-23")
             if minutes > 59:
-                raise ValueError("Minutes must be between 00-59")
+                raise TimePeriodCreationError("Minutes must be between 00-59")
             if seconds > 59:
-                raise ValueError("Seconds must be between 00-59")
+                raise TimePeriodCreationError("Seconds must be between 00-59")

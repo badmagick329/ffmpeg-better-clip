@@ -1,0 +1,2 @@
+class TimePeriodCreationError(Exception):
+    pass

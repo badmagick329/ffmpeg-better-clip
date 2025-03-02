@@ -6,7 +6,7 @@ from src.timecode_period import TimecodePeriod
 
 class TimePeriodFactory:
     @staticmethod
-    def create(start_input: str, end_input: str) -> TimePeriod:
+    def create(start_input: str | None, end_input: str | None) -> TimePeriod:
         try:
             return TimecodePeriod.create(start_input, end_input)
         except TimePeriodCreationError:

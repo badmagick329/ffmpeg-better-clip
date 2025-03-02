@@ -9,7 +9,7 @@ def main():
     ]
     cmd_strings = []
     for ffmpeg_str in ffmpeg_strs:
-        cmd_strings.append(FFmpegCmd.create(ffmpeg_str).to_duration_cmd())
+        cmd_strings.append(FFmpegCmd.create(ffmpeg_str).to_better_cmd())
     pyperclip.copy("\n".join(cmd_strings))
 
 

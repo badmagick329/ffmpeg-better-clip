@@ -1,4 +1,4 @@
-TIMECODE_SECONDS_TEST_CASES = [
+TIMECODE_TO_SECONDS_TEST_CASES = [
     ("test time with zeros", ("00:00:00.000", "00:00:00.000"), (0.0, 0.0)),
     (
         "test time with seconds difference",
@@ -30,7 +30,6 @@ INVALID_TIMECODE_CASES = [
     ("wrong format", "1:2:3.000"),
     ("letters in input", "aa:bb:cc.000"),
     ("empty string", ""),
-    ("none value", None),
 ]
 
 EDGE_TIMECODE_CASES = [
@@ -40,4 +39,13 @@ EDGE_TIMECODE_CASES = [
 INVALID_DURATION_CASES = [
     ("duration of 0", "01:01:01.111", "01:01:01.111"),
     ("negative duration", "01:01:01.111", "01:01:00.111"),
+]
+
+VALID_DURATION_CASES = [
+    ("duration of 1 second", "01:01:01.111", "01:01:02.111", 1.0),
+    ("duration of 1 minute", "01:01:01.111", "01:02:01.111", 60.0),
+    ("duration of 1 hour", "01:01:01.111", "02:01:01.111", 3600.0),
+    ("duration of none when start is none", None, "01:01:01.111", None),
+    ("duration of none when end is none", "01:01:01.111", None, None),
+    ("duration of none when both are none", None, None, None),
 ]

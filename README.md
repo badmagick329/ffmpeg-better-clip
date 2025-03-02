@@ -24,7 +24,7 @@ FFmpeg’s efficiency can suffer when it has to read through a file up to a cert
 
 ## Requirements
 
-- **Python 3.x**
+- **Python 3.10+**
 - **Clipboard Library:**  
   [pyperclip](https://pypi.org/project/pyperclip/)
 - **FFmpeg Installed:**  
